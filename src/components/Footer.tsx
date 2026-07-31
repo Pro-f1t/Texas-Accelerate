@@ -20,16 +20,18 @@ export default function Footer() {
       </div>
 
       <div className="shell pt-24 pb-12 md:pt-32 md:pb-14">
-        <h2 className="h-display max-w-3xl">Accelerate your Career</h2>
+        <h2 className="h-display lg:whitespace-nowrap">Accelerate your career now</h2>
         <p className="t-body mt-4 max-w-lg text-muted">
           Bridging the gap between students and work that actually matters.
         </p>
 
-        <PillButton href="/contact-us" className="mt-10">
-          Contact Us
+        <PillButton href="/apply" size="sm" className="mt-8">
+          Apply Now
         </PillButton>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-white/10 pt-8 md:mt-28 md:flex-row md:items-center md:justify-between">
+        {/* items-start matters on phones: without it the stretched flex item
+            makes the logo full-width and object-contain centres the artwork. */}
+        <div className="mt-10 flex flex-col items-start gap-4 border-t border-white/10 pt-6 md:mt-14 md:flex-row md:items-center md:justify-between">
           <Logo heightClass="h-8 md:h-10" />
           <p className="text-txs text-white/60">
             © 2026 Texas Accelerate, All Rights Reserved.

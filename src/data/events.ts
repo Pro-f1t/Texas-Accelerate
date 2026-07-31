@@ -8,6 +8,15 @@ export type EventPost = {
   pullQuote?: string;
 };
 
+export type UpcomingEvent = { title: string; date: string; seed: number };
+
+/** Sidebar list on /events. Separate from EVENTS, which is the posted archive. */
+export const UPCOMING_EVENTS: UpcomingEvent[] = [
+  { title: "Info Session #1", date: "Date TBA", seed: 0 },
+  { title: "Info Session #2", date: "Date TBA", seed: 1 },
+  { title: "Coffee Chat #1", date: "Date TBA", seed: 2 },
+];
+
 export const GOOGLE_CALENDAR_URL =
   "https://calendar.google.com/calendar/u/0?cid=NGYzOGFkYzc3NzYyYzc3ZmEzODgxMDI1NDQ4YTk2YjJiODlkNDk1MzgzYzMxYTI2MzgzMzgzYjkzNWI2ODMwOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t";
 

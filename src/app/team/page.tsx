@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+import { LinkedInIcon } from "@/components/Icons";
 import { PlaceholderArt } from "@/components/ui";
 import { LEADERSHIP, MEMBERS, type Member } from "@/data/team";
 
@@ -13,20 +14,37 @@ function MemberCard({ m }: { m: Member }) {
         label={`${m.first} ${m.last}`}
         className="aspect-[4/5] w-full rounded-xl"
       />
-      <h3 className="mt-4 text-txl leading-tight font-semibold">
-        {m.first}
-        <br />
-        {m.last}
-      </h3>
-      <p className="mt-2 text-txs text-muted">
-        {m.role}
-        {m.major && (
-          <>
+      {/* Name/role on the left, LinkedIn pinned to the bottom-right. */}
+      <div className="mt-4 flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h3 className="text-txl leading-tight font-semibold">
+            {m.first}
             <br />
-            {m.major}
-          </>
+            {m.last}
+          </h3>
+          <p className="mt-2 text-txs text-muted">
+            {m.role}
+            {m.major && (
+              <>
+                <br />
+                {m.major}
+              </>
+            )}
+          </p>
+        </div>
+
+        {m.linkedin && (
+          <a
+            href={m.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${m.first} ${m.last} on LinkedIn`}
+            className="shrink-0 text-white/70 transition-colors hover:text-accent"
+          >
+            <LinkedInIcon className="h-5 w-5" />
+          </a>
         )}
-      </p>
+      </div>
     </article>
   );
 }
@@ -34,11 +52,11 @@ function MemberCard({ m }: { m: Member }) {
 export default function TeamPage() {
   return (
     <>
-      <PageHeader title="Our Team" crumbs={[{ label: "Team" }]} />
+      <PageHeader title="Meet the Team" crumbs={[{ label: "Team" }]} />
 
       <section className="shell py-16 md:py-20">
         <h2 className="text-center text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.26] font-semibold">
-          Leadership &amp; Executive Team
+          Leadership
         </h2>
         {/* The Figma frames keep these 4-up even at 402px, which is unreadable on a
             phone, so they drop to 2-up below the lg breakpoint. */}

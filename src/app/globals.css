@@ -81,27 +81,33 @@ body {
   }
 }
 
-/* Horizontal padding only, same steps as .shell — used by the header, which
-   manages its own max-width and vertical rhythm. */
+/* Horizontal padding only, same steps as .shell — used by the header, and by
+   full-bleed scrollers. `scroll-padding-inline` matters on the latter: with
+   scroll-snap, the first item snaps flush to the scrollport and ignores plain
+   padding, so without this the row starts hard against the viewport edge. */
 .shell-x {
   padding-inline: 100px;
+  scroll-padding-inline: 100px;
 }
 
 @media (max-width: 1439px) {
   .shell-x {
     padding-inline: 60px;
+    scroll-padding-inline: 60px;
   }
 }
 
 @media (max-width: 1023px) {
   .shell-x {
     padding-inline: 40px;
+    scroll-padding-inline: 40px;
   }
 }
 
 @media (max-width: 699px) {
   .shell-x {
     padding-inline: 20px;
+    scroll-padding-inline: 20px;
   }
 }
 
@@ -110,20 +116,40 @@ body {
 .h-display {
   font-weight: 600;
   letter-spacing: -0.02em;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(1.875rem, 4vw, 4rem);
   line-height: 1.25;
 }
 
 .h-hero {
   font-weight: 600;
   letter-spacing: -0.02em;
-  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+  font-size: clamp(1.875rem, 4.5vw, 4.5rem);
   line-height: 1.2;
+}
+
+/* The opening statement paragraph. Same 4vw curve as .h-display — so it's
+   identical at desktop — but a much lower floor. At 402px the display floor of
+   2rem makes this long block overwhelm the screen. */
+.t-statement {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.3rem, 4vw, 4rem);
+  line-height: 1.3;
+}
+
+/* Stat values in the blue band. Same 4vw curve as .h-display so desktop is
+   unchanged, but floors at the reference's 20px instead of 30px — the band
+   packs all four stats into a single row on phones. */
+.h-stat {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  font-size: clamp(1.25rem, 4vw, 4rem);
 }
 
 /* 18px / 155% / -0.02em — every supporting paragraph on the site. */
 .t-body {
-  font-size: clamp(1rem, 1.125vw, 1.125rem);
+  font-size: clamp(0.8125rem, 1.125vw, 1.125rem);
   line-height: 1.55;
   letter-spacing: -0.02em;
 }

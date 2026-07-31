@@ -5,6 +5,8 @@ export type Member = {
   role: string;
   /** Second line under the title, e.g. the person's major. */
   major?: string;
+  /** Optional profile URL — renders a LinkedIn link on the card when present. */
+  linkedin?: string;
   seed: number;
 };
 
@@ -12,29 +14,33 @@ export const LEADERSHIP: Member[] = [
   {
     first: "Jamie",
     last: "Hao",
-    role: "Founder, Director of Operations",
+    role: "Founder; Director of Operations",
     major: "Biomedical Engineering",
+    linkedin: "https://www.linkedin.com/in/jamie-hao/",
     seed: 0,
   },
   {
     first: "Arrman",
     last: "Kapoor",
-    role: "Director of Acquisition",
-    major: "IRG + Econ",
+    role: "Founder; Director of Acquisition",
+    major: "IRG & Econ",
+    linkedin: "https://www.linkedin.com/in/arrman-kapoor/",
     seed: 1,
   },
   {
     first: "Darcy",
     last: "Yin",
-    role: "Director of Management",
-    major: "Government",
+    role: "Founder; Director of Management",
+    major: "Government & Econ",
+    linkedin: "https://www.linkedin.com/in/darcy-yin/",
     seed: 2,
   },
   {
     first: "Jackson",
     last: "Lawrence",
-    role: "Director of Engagement",
+    role: "Founder; Director of Engagement",
     major: "Government",
+    linkedin: "https://www.linkedin.com/in/jackson--lawrence/",
     seed: 3,
   },
 ];

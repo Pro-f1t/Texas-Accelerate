@@ -37,35 +37,50 @@ export const PROCESS = [
   },
 ];
 
-// Draft copy — written to fit the card layout at ~2 lines. Edit freely.
 export const HOW_WE_WORK_INTRO =
-  "We source partners across Austin, screen every applicant, and match students to the work that actually fits them.\nEvery team runs a real project on a real timeline, with mentorship the whole way through.";
+  "Apply once. Get access to new internships and projects all semester long.";
 
+/**
+ * Card subtitles are capped at two lines so every card's image lands at the same
+ * height. Keep these to roughly 60 characters.
+ */
 export const PARTNER_TYPES = [
   {
-    title: "Start-up Companies",
-    subtitle:
-      "Early-stage Austin teams that need real capacity for research, growth, and go-to-market work.",
+    title: "Business, Finance\n& Consulting",
+    subtitle: "Strategy, analysis, and operations work with Austin firms.",
     seed: 0,
   },
   {
-    title: "Non-Profit Orgs",
-    subtitle:
-      "Local organizations stretching small budgets across fundraising, outreach, and program analysis.",
+    title: "Government, Law\n& Public Affairs",
+    subtitle: "Policy research, advocacy, and legislative support.",
     seed: 1,
   },
   {
-    title: "Campaigns",
-    subtitle:
-      "Political and advocacy campaigns that need voter research, field organizing, and comms support.",
+    title: "Marketing,\nCommunications",
+    subtitle: "Brand, content, and campaign work that ships publicly.",
     seed: 2,
+  },
+  {
+    title: "Engineering\n& Manufacturing",
+    subtitle: "Technical projects with hardware and software teams.",
+    seed: 3,
+  },
+  {
+    title: "Healthcare\n& Life Sciences",
+    subtitle: "Research, operations, and outreach in health and biotech.",
+    seed: 0,
+  },
+  {
+    title: "Non-Profit\n& Social Impact",
+    subtitle: "Fundraising, outreach, and program work for local causes.",
+    seed: 1,
   },
 ];
 
 export const STATS = [
   { value: "Fall 2026", label: "First Cohort" },
-  { value: "0", label: "Experience Required" },
-  { value: "7", label: "Field Teams" },
+  { value: "X", label: "Active Partners" },
+  { value: "15+", label: "Industries Represented" },
   { value: "$0", label: "To partner organizations" },
 ];
 
@@ -92,13 +107,19 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
   { src: "/logos/pwc.png", alt: "PwC", w: 158, h: 79 },
   { src: "/logos/porsche.png", alt: "Porsche", w: 271, h: 139 },
   { src: "/logos/lockheed.png", alt: "Lockheed Martin", w: 398, h: 98 },
-  { src: "/logos/kpmg.png", alt: "KPMG", w: 221, h: 91 },
-  { src: "/logos/worldbank.png", alt: "The World Bank", w: 242, h: 53 },
   { src: "/logos/airtel.png", alt: "Airtel", w: 736, h: 275 },
   // Near-square lockup: the swoosh takes most of the height, so it needs to run
   // taller than the rest for the wordmark to read at a comparable size.
   { src: "/logos/lanier.png", alt: "The Lanier Law Firm", w: 495, h: 460, size: 130 },
   { src: "/logos/wharton.png", alt: "Wharton Lab", w: 864, h: 218 },
+  // Square seal, so it needs to run taller than the horizontal wordmarks.
+  {
+    src: "/logos/texas-house-reps.png",
+    alt: "Texas House of Representatives",
+    w: 665,
+    h: 665,
+    size: 132,
+  },
 ];
 
 // TODO(jamie): these answers are still the template filler that shipped with the

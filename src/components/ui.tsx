@@ -7,24 +7,33 @@ export function PillButton({
   href,
   children,
   tone = "blue",
+  size = "md",
   className = "",
 }: {
   href: string;
   children: ReactNode;
   tone?: "blue" | "dark";
+  size?: "md" | "sm";
   className?: string;
 }) {
   const tones = {
     blue: "bg-accent text-ink hover:bg-white",
     dark: "bg-black text-white hover:bg-neutral-800",
   };
+  // Kept as a prop rather than a className override — Tailwind resolves
+  // conflicting utilities by CSS order, not by order in the class attribute.
+  const sizes = {
+    md: "px-5 py-3 text-[14px] lg:px-7 lg:py-4 lg:text-[16px]",
+    sm: "px-5 py-2.5 text-[14px]",
+  };
+  const icon = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-2.5 rounded-full px-7 py-4 text-[16px] leading-[1.5] font-normal transition-colors ${tones[tone]} ${className}`}
+      className={`inline-flex items-center gap-2.5 rounded-full leading-[1.5] font-normal transition-colors ${sizes[size]} ${tones[tone]} ${className}`}
     >
       {children}
-      <ArrowRight className="h-4 w-4" />
+      <ArrowRight className={icon} />
     </Link>
   );
 }
@@ -43,12 +52,15 @@ export function ArrowCircle({
     dark: "bg-white/8 text-white group-hover:bg-accent group-hover:text-ink",
     blue: "bg-accent text-ink",
   };
-  const sizes = { sm: "h-11 w-11", md: "h-12 w-12" };
+  // `sm` scales down on phones — at 44px it was taller than the card's title
+  // block, so it drove the row height and ate into the image area.
+  const sizes = { sm: "h-8 w-8 lg:h-11 lg:w-11", md: "h-12 w-12" };
+  const icons = { sm: "h-3.5 w-3.5 lg:h-5 lg:w-5", md: "h-5 w-5" };
   return (
     <span
       className={`inline-flex shrink-0 items-center justify-center rounded-full transition-colors ${tones[tone]} ${sizes[size]} ${className}`}
     >
-      <ArrowUpRight className="h-5 w-5" />
+      <ArrowUpRight className={icons[size]} />
     </span>
   );
 }

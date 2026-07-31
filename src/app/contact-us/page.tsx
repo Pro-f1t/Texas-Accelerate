@@ -13,7 +13,7 @@ export const metadata: Metadata = { title: "Contact Us | Texas Accelerate" };
 export default function ContactPage() {
   return (
     <>
-      <PageHeader title="Contact Us" crumbs={[{ label: "Contact Us" }]} />
+      <PageHeader title="Get in Touch" crumbs={[{ label: "Contact Us" }]} />
 
       {/* Single column now that the brand card is gone and the application block
           lives on /apply. Capped so the rules don't stretch the full 1400px. */}
@@ -22,26 +22,30 @@ export default function ContactPage() {
           <h2 className="text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.26] font-semibold">
             Have Questions?
             <br />
-            Get in Touch!
+            Get in Touch
           </h2>
           <p className="mt-6 text-tsm text-muted">
             Contact us with any questions you have about the organization
           </p>
 
-          <div className="mt-10 flex items-center gap-5 border-b border-white/12 pb-7">
-            <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent text-ink">
+          {/* Whole row is the link, with a prefilled subject so it opens a
+              ready-to-send draft rather than a blank compose window. */}
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+              "Question about Texas Accelerate",
+            )}`}
+            className="group mt-10 flex items-center gap-5 border-b border-white/12 pb-7"
+          >
+            <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent text-ink transition-transform group-hover:scale-105">
               <MailIcon className="h-6 w-6" />
             </span>
-            <div>
-              <p className="text-tsm text-muted">Email</p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-txl font-medium hover:text-accent"
-              >
+            <span>
+              <span className="block text-tsm text-muted">Email</span>
+              <span className="block text-txl font-medium transition-colors group-hover:text-accent">
                 {CONTACT_EMAIL}
-              </a>
-            </div>
-          </div>
+              </span>
+            </span>
+          </a>
 
           <div className="flex items-center gap-5 border-b border-white/12 py-7">
             <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent text-ink">

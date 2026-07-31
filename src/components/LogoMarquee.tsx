@@ -19,8 +19,11 @@ function LogoItem({ logo }: { logo: PartnerLogo }) {
         // because the marquee is far below the fold but must be laid out
         // correctly from the start — it's only 8 unique URLs, all cached.
         loading="eager"
-        style={{ height: logo.size ?? 64 }}
-        className="w-auto object-contain"
+        // Per-logo height passed as a variable so it can scale down on phones
+        // without losing the individual overrides (square seals need to run
+        // taller than horizontal wordmarks at every size).
+        style={{ "--logo-h": `${logo.size ?? 64}px` } as React.CSSProperties}
+        className="h-[calc(var(--logo-h)*0.62)] w-auto object-contain lg:h-[var(--logo-h)]"
       />
     );
   }
@@ -36,7 +39,9 @@ function LogoItem({ logo }: { logo: PartnerLogo }) {
 export default function LogoMarquee({ logos }: { logos: PartnerLogo[] }) {
   return (
     <div className="marquee bleed-x mt-8">
-      <ul className="marquee-track items-center gap-x-16">
+      {/* Desktop keeps its original 64px gap + 16px item padding = 80px. Only
+          the phone value was tightened. */}
+      <ul className="marquee-track items-center gap-x-5 lg:gap-x-16">
         {/*
           The animation translates by -50%, so the track must be exactly two
           identical halves. Each half repeats the list REPEATS times, because a
@@ -48,7 +53,7 @@ export default function LogoMarquee({ logos }: { logos: PartnerLogo[] }) {
           logos.map((logo) => (
             <li
               key={`${pass}-${logo.alt}`}
-              className="flex shrink-0 items-center justify-center px-2"
+              className="flex shrink-0 items-center justify-center lg:px-2"
               aria-hidden={pass > 0 || undefined}
             >
               <LogoItem logo={logo} />

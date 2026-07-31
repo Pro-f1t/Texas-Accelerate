@@ -32,8 +32,18 @@ export const metadata: Metadata = {
     title: "Texas Accelerate",
     description:
       "We connect UT students with real work at Austin startups, nonprofits, and campaigns.",
-    images: ["/og.png"],
+    // Declaring the dimensions lets scrapers lay the card out before the image
+    // finishes downloading; several won't render a preview without them.
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Texas Accelerate",
+      },
+    ],
     type: "website",
+    siteName: "Texas Accelerate",
   },
 };
 

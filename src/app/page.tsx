@@ -1,10 +1,9 @@
 import DarkVeil from "@/components/DarkVeil";
-import Faq from "@/components/Faq";
+import ContactDetails from "@/components/ContactDetails";
 import LogoMarquee from "@/components/LogoMarquee";
 import ProcessCard from "@/components/ProcessCard";
-import { ArrowCircle, PillButton, PlaceholderArt } from "@/components/ui";
+import { PillButton, PlaceholderArt } from "@/components/ui";
 import {
-  FAQS,
   HOW_WE_WORK_INTRO,
   PARTNER_LOGOS,
   PARTNER_TYPES,
@@ -71,19 +70,16 @@ export default function Home() {
           {PARTNER_TYPES.map((p) => (
             <article
               key={p.title}
-              className="group flex aspect-[447/634] w-[219px] shrink-0 snap-start flex-col rounded-[32px] bg-surface p-4 sm:w-[300px] sm:p-6 lg:w-[340px]"
+              className="group flex aspect-[447/634] w-[219px] shrink-0 snap-start flex-col rounded-[32px] bg-surface p-4 transition-colors duration-300 hover:bg-accent sm:w-[300px] sm:p-6 lg:w-[340px]"
             >
               {/* Title and subtitle each reserve exactly two lines and clamp to
                   two. That makes everything above the image a fixed height, so
                   the image — which takes the remaining space — is identical on
                   every card regardless of how long the copy is. */}
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="line-clamp-2 min-h-[32px] whitespace-pre-line text-[13px] leading-[1.2] font-bold tracking-[-0.02em] lg:min-h-[54px] lg:text-[22px]">
-                  {p.title}
-                </h3>
-                <ArrowCircle size="sm" />
-              </div>
-              <p className="mt-1.5 line-clamp-2 min-h-[31px] text-[11px] leading-[1.4] text-muted lg:mt-2 lg:min-h-[40px] lg:text-tsm">
+              <h3 className="line-clamp-2 min-h-[36px] whitespace-pre-line text-[15px] leading-[1.2] font-bold tracking-[-0.02em] transition-colors duration-300 group-hover:text-ink lg:min-h-[63px] lg:text-[26px]">
+                {p.title}
+              </h3>
+              <p className="mt-1.5 line-clamp-2 min-h-[31px] text-[11px] leading-[1.4] text-muted transition-colors duration-300 group-hover:text-muted-ink lg:mt-2 lg:min-h-[40px] lg:text-tsm">
                 {p.subtitle}
               </p>
               <PlaceholderArt
@@ -135,12 +131,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- FAQ: inset 80px further than the rest ---------------- */}
+      {/* ---------------- Contact ---------------- */}
       <section className="shell pt-16 pb-12 lg:pt-40">
-        <h2 className="h-display">We Know What&rsquo;s On Your Mind</h2>
-        <div className="mt-8 lg:mt-12 lg:px-20">
-          <Faq items={FAQS} />
-        </div>
+        <ContactDetails />
       </section>
     </>
   );

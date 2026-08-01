@@ -61,6 +61,11 @@ export const PARTNER_TYPES = [
     seed: 2,
   },
   {
+    title: "Software, AI\n& Technology",
+    subtitle: "Product, data, and engineering work with technical teams.",
+    seed: 2,
+  },
+  {
     title: "Engineering\n& Manufacturing",
     subtitle: "Technical projects with hardware and software teams.",
     seed: 3,
@@ -81,7 +86,7 @@ export const STATS = [
   { value: "Fall 2026", label: "First Cohort" },
   { value: "X", label: "Active Partners" },
   { value: "15+", label: "Industries Represented" },
-  { value: "$0", label: "To partner organizations" },
+  { value: "370+", label: "Combined Volunteering Hours" },
 ];
 
 /**

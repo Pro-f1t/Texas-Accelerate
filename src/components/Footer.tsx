@@ -1,6 +1,8 @@
 import DarkVeil from "./DarkVeil";
 import Logo from "./Logo";
+import { InstagramIcon, LinkedInIcon } from "./Icons";
 import { PillButton } from "./ui";
+import { SOCIALS } from "@/data/site";
 
 export default function Footer() {
   return (
@@ -31,11 +33,35 @@ export default function Footer() {
 
         {/* items-start matters on phones: without it the stretched flex item
             makes the logo full-width and object-contain centres the artwork. */}
-        <div className="mt-10 flex flex-col items-start gap-4 border-t border-white/10 pt-6 md:mt-14 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col items-start gap-4 border-t border-white/10 pt-6 md:mt-20 md:flex-row md:items-center md:justify-between">
           <Logo heightClass="h-8 md:h-10" />
-          <p className="text-txs text-white/60">
-            © 2026 Texas Accelerate, All Rights Reserved.
-          </p>
+
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+            <div className="flex items-center gap-4">
+              <a
+                href={SOCIALS.linkedin}
+                aria-label="Texas Accelerate on LinkedIn"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white/70 transition-colors hover:text-accent"
+              >
+                <LinkedInIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={SOCIALS.instagram}
+                aria-label="Texas Accelerate on Instagram"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white/70 transition-colors hover:text-accent"
+              >
+                <InstagramIcon className="h-5 w-5" />
+              </a>
+            </div>
+
+            <p className="text-txs text-white/60">
+              © 2026 Texas Accelerate, All Rights Reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

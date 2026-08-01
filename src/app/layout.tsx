@@ -13,14 +13,21 @@ const syne = Syne({
 
 /**
  * Absolute base for OG/Twitter image URLs.
- * - Set NEXT_PUBLIC_SITE_URL in Vercel once a custom domain is attached.
- * - Otherwise VERCEL_URL covers preview and production deploys automatically.
- * - Falls back to localhost for local dev.
+ *
+ * Must be the *public production* domain. Do NOT use VERCEL_URL here — that's
+ * the per-deployment hostname (project-hash-org.vercel.app), which Vercel's
+ * Deployment Protection puts behind auth. Social scrapers get a 302 to a login
+ * page instead of the image, and clients like iMessage then fall back to
+ * scraping a random image off the page.
+ *
+ * - NEXT_PUBLIC_SITE_URL wins, for when a custom domain is attached.
+ * - VERCEL_PROJECT_PRODUCTION_URL is the stable public domain on Vercel.
+ * - localhost for local dev.
  */
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000");
 
 export const metadata: Metadata = {

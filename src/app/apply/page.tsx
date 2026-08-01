@@ -36,7 +36,7 @@ export default function ApplyPage() {
               800x600, so this wrapper makes it fluid — aspect box on small
               screens, definite height on desktop, since a pure aspect ratio
               clips the embed's own footer. --------- */}
-          <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/12 bg-surface sm:aspect-[4/3] lg:col-start-1 lg:row-start-2 lg:aspect-auto lg:h-[700px]">
+          <div className="aspect-[3/4] w-full overflow-hidden rounded-[32px] bg-surface sm:aspect-[4/3] lg:col-start-1 lg:row-start-2 lg:aspect-auto lg:h-[700px]">
             <iframe
               src={RECRUITMENT_CALENDAR_SRC}
               title="2026-2027 Recruitment Timeline"
@@ -47,7 +47,8 @@ export default function ApplyPage() {
 
           {/* --------- Application form card: row 2, right --------- */}
           <aside className="lg:col-start-2 lg:row-start-2">
-            <div className="overflow-hidden rounded-3xl">
+            {/* Brand card on the same surface as every other card. */}
+            <div className="overflow-hidden rounded-[32px] bg-surface">
               <Image
                 src="/og.png"
                 alt="Texas Accelerate"
@@ -58,15 +59,29 @@ export default function ApplyPage() {
               />
             </div>
 
-            <div className="mt-8 flex items-center justify-between gap-6">
-              <div>
-                <h3 className="text-[clamp(1.25rem,2.4vw,2rem)] font-semibold">
-                  2026 Fall Application Form
-                </h3>
-                <p className="mt-2 text-tsm text-muted">Coming Soon!</p>
-              </div>
-              <ArrowCircle tone="blue" />
-            </div>
+            {/* Same treatment as the Join our Google Calendar button: surface
+                card, arrow, blue fill on hover. Both are placeholders for now,
+                so they're buttons rather than links. */}
+            <ul className="mt-6 flex flex-col gap-5">
+              {[
+                { title: "2026 Fall Application Form", note: "Coming Soon!" },
+                { title: "2026 Recruiting GroupMe", note: "Coming Soon!" },
+              ].map((item) => (
+                <li key={item.title}>
+                  <div className="group flex cursor-pointer items-center justify-between gap-4 rounded-[32px] bg-surface p-7 transition-colors duration-300 hover:bg-accent">
+                    <span>
+                      <span className="block text-dxs leading-tight font-semibold transition-colors duration-300 group-hover:text-ink">
+                        {item.title}
+                      </span>
+                      <span className="mt-2 block text-tsm text-muted transition-colors duration-300 group-hover:text-muted-ink">
+                        {item.note}
+                      </span>
+                    </span>
+                    <ArrowCircle tone="blue" size="sm" />
+                  </div>
+                </li>
+              ))}
+            </ul>
           </aside>
         </div>
       </section>

@@ -8,10 +8,9 @@ import Logo from "./Logo";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
+  { href: "/employers", label: "Employers" },
   { href: "/events", label: "Events" },
   { href: "/team", label: "Team" },
-  { href: "/contact-us", label: "Contact Us" },
 ];
 
 /** The standalone pill CTA, kept out of LINKS so it renders separately. */

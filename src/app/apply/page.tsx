@@ -60,15 +60,20 @@ export default function ApplyPage() {
             </div>
 
             {/* Same treatment as the Join our Google Calendar button: surface
-                card, arrow, blue fill on hover. Both are placeholders for now,
-                so they're buttons rather than links. */}
+                card, arrow, blue fill on hover. Entries with an `href` render
+                as real links; the rest stay inert until they have somewhere
+                to point. */}
             <ul className="mt-6 flex flex-col gap-5">
               {[
                 { title: "2026 Fall Application Form", note: "Coming Soon!" },
-                { title: "2026 Recruiting GroupMe", note: "Coming Soon!" },
-              ].map((item) => (
-                <li key={item.title}>
-                  <div className="group flex cursor-pointer items-center justify-between gap-4 rounded-[32px] bg-surface p-7 transition-colors duration-300 hover:bg-accent">
+                {
+                  title: "2026 Recruiting GroupMe",
+                  note: "Join the group",
+                  href: "https://groupme.com/join_group/116261119/SudWzwg9",
+                },
+              ].map((item) => {
+                const inner = (
+                  <>
                     <span>
                       <span className="block text-dxs leading-tight font-semibold transition-colors duration-300 group-hover:text-ink">
                         {item.title}
@@ -78,9 +83,28 @@ export default function ApplyPage() {
                       </span>
                     </span>
                     <ArrowCircle tone="blue" size="sm" />
-                  </div>
-                </li>
-              ))}
+                  </>
+                );
+                const shell =
+                  "group flex cursor-pointer items-center justify-between gap-4 rounded-[32px] bg-surface p-7 transition-colors duration-300 hover:bg-accent";
+
+                return (
+                  <li key={item.title}>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={shell}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className={shell}>{inner}</div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </aside>
         </div>

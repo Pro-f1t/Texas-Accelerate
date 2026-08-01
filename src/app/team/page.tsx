@@ -54,7 +54,7 @@ export default function TeamPage() {
     <>
       <PageHeader title="Meet the Team" crumbs={[{ label: "Team" }]} />
 
-      <section className="shell py-16 md:py-20">
+      <section className="shell pt-8 pb-14 md:py-20">
         <h2 className="text-center text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.26] font-semibold">
           Leadership
         </h2>

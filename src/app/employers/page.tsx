@@ -11,7 +11,7 @@ export default function ProjectsPage() {
     <>
       <PageHeader title="Past and Current Employers" crumbs={[{ label: "Employers" }]} />
 
-      <section className="shell py-16 md:py-20">
+      <section className="shell pt-8 pb-14 md:py-20">
         {PROJECTS.length === 0 ? (
           <p className="h-display py-16">Coming Soon - Fall 2026</p>
         ) : (

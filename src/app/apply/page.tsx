@@ -15,7 +15,7 @@ export default function ApplyPage() {
     <>
       <PageHeader title="Apply" crumbs={[{ label: "Apply" }]} />
 
-      <section className="shell py-16 md:py-20">
+      <section className="shell pt-8 pb-14 md:py-20">
         {/*
           Two explicit rows at lg: the heading occupies row 1 of the left column
           only, and the calendar and the application card share row 2. That keeps
@@ -25,7 +25,7 @@ export default function ApplyPage() {
         */}
         <div className="grid gap-y-8 lg:grid-cols-[1fr_380px] lg:grid-rows-[auto_1fr] lg:gap-x-16">
           {/* --------- Timeline heading: row 1, left --------- */}
-          <div className="lg:col-start-1 lg:row-start-1">
+          <div className="order-2 lg:order-none lg:col-start-1 lg:row-start-1">
             <h2 className="h-display">Recruitment Timeline</h2>
             <p className="t-body mt-4 max-w-xl text-muted">
               Key dates for the 2026&ndash;2027 cycle.
@@ -36,7 +36,7 @@ export default function ApplyPage() {
               800x600, so this wrapper makes it fluid — aspect box on small
               screens, definite height on desktop, since a pure aspect ratio
               clips the embed's own footer. --------- */}
-          <div className="aspect-[3/4] w-full overflow-hidden rounded-[32px] bg-surface sm:aspect-[4/3] lg:col-start-1 lg:row-start-2 lg:aspect-auto lg:h-[700px]">
+          <div className="order-3 aspect-[3/4] w-full overflow-hidden rounded-[32px] bg-surface sm:aspect-[4/3] lg:order-none lg:col-start-1 lg:row-start-2 lg:aspect-auto lg:h-[700px]">
             <iframe
               src={RECRUITMENT_CALENDAR_SRC}
               title="2026-2027 Recruitment Timeline"
@@ -46,7 +46,7 @@ export default function ApplyPage() {
           </div>
 
           {/* --------- Application form card: row 2, right --------- */}
-          <aside className="lg:col-start-2 lg:row-start-2">
+          <aside className="order-1 lg:order-none lg:col-start-2 lg:row-start-2">
             {/* Brand card on the same surface as every other card. */}
             <div className="overflow-hidden rounded-[32px] bg-surface">
               <Image

@@ -10,7 +10,9 @@ export default function PageHeader({
   crumbs: { label: string; href?: string }[];
 }) {
   return (
-    <section className="bg-accent pt-40 pb-10 md:pt-52 md:pb-12">
+    // Phone band is deliberately shallow — just enough to clear the 80px fixed
+    // nav. Desktop keeps the tall band from the Figma frames.
+    <section className="bg-accent pt-28 pb-6 md:pt-52 md:pb-12">
       <div className="shell">
         <h1 className="text-[clamp(2rem,4.4vw,3rem)] leading-[1.26] font-semibold text-ink">
           {title}

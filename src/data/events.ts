@@ -10,6 +10,34 @@ export type EventPost = {
 
 export type UpcomingEvent = { title: string; date: string; seed: number };
 
+export type InstagramPost = {
+  /** Code from the post URL: instagram.com/p/<shortcode>/ */
+  shortcode: string;
+  alt: string;
+};
+
+/**
+ * The Instagram grid on /events. Hand-maintained, newest first — there is no
+ * API call, so the site never breaks when Instagram changes something.
+ *
+ * To add a post:
+ *   1. Save its cover image to `public/instagram/<shortcode>.jpg`
+ *   2. Prepend an entry here
+ *
+ * Name the file after the shortcode. `/_next/image` caches on path, so a fresh
+ * shortcode is a fresh path and never serves a stale thumbnail.
+ */
+export const INSTAGRAM_POSTS: InstagramPost[] = [
+  {
+    shortcode: "DbrAgAjlZBA",
+    alt: "New partnership: Texas Accelerate x OpenTrade",
+  },
+  {
+    shortcode: "Dbn7SZyEUX1",
+    alt: "Resume experience, starting now. First cohort Fall 2026",
+  },
+];
+
 /** Sidebar list on /events. Separate from EVENTS, which is the posted archive. */
 export const UPCOMING_EVENTS: UpcomingEvent[] = [
   { title: "Info Session #1", date: "Date TBA", seed: 0 },

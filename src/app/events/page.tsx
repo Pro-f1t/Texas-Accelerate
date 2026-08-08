@@ -1,12 +1,20 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { ArrowCircle, PlaceholderArt } from "@/components/ui";
-import { GOOGLE_CALENDAR_URL, UPCOMING_EVENTS } from "@/data/events";
+import {
+  GOOGLE_CALENDAR_URL,
+  INSTAGRAM_POSTS,
+  UPCOMING_EVENTS,
+} from "@/data/events";
+import { SOCIALS } from "@/data/site";
 
 export const metadata: Metadata = { title: "Events | Texas Accelerate" };
 
-/** Placeholder tiles until the Instagram feed is wired up. */
-const FEED_TILES = 6;
+// Two posts read better as two large tiles than as two thirds of an empty row,
+// so the grid only opens up to three columns once there's enough to fill it.
+const feedCols =
+  INSTAGRAM_POSTS.length > 2 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2";
 
 export default function EventsPage() {
   return (
@@ -20,7 +28,9 @@ export default function EventsPage() {
           columns, with Instagram spanning both rows on the left.
         */}
         <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-10">
-          <div className="order-1 rounded-[32px] bg-surface p-7 lg:order-none lg:col-start-2 lg:row-start-2">
+          {/* self-start, or the 1fr row stretches this card to match the taller
+              Instagram column and leaves dead space under the last event. */}
+          <div className="order-1 rounded-[32px] bg-surface p-7 lg:order-none lg:col-start-2 lg:row-start-2 lg:self-start">
             <h2 className="text-dxs font-semibold">Upcoming Events</h2>
             <ul className="mt-5 flex flex-col gap-5">
               {UPCOMING_EVENTS.map((e) => (
@@ -42,18 +52,35 @@ export default function EventsPage() {
             </ul>
           </div>
 
-          {/* Instagram feed. Tiles are empty for now; each becomes a post link. */}
+          {/* Instagram feed. Tiles are empty for now; each links to the profile. */}
           <div className="order-2 lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-2">
             <h2 className="text-dxs font-semibold">From Instagram</h2>
-            <p className="mt-3 text-tsm text-muted">Coming soon</p>
+            <a
+              href={SOCIALS.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-block text-tsm text-muted transition-colors hover:text-accent"
+            >
+              @texasaccelerate
+            </a>
 
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:gap-5">
-              {Array.from({ length: FEED_TILES }).map((_, i) => (
-                <div
-                  key={i}
-                  aria-hidden
-                  className="aspect-square rounded-xl bg-surface"
-                />
+            <div className={`mt-6 grid gap-4 lg:gap-5 ${feedCols}`}>
+              {INSTAGRAM_POSTS.map((post) => (
+                <a
+                  key={post.shortcode}
+                  href={`https://www.instagram.com/p/${post.shortcode}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative block aspect-square overflow-hidden rounded-xl bg-surface transition-opacity hover:opacity-80"
+                >
+                  <Image
+                    src={`/instagram/${post.shortcode}.jpg`}
+                    alt={post.alt}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 45vw"
+                    className="object-cover"
+                  />
+                </a>
               ))}
             </div>
           </div>

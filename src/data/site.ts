@@ -7,7 +7,7 @@ export const RECRUITMENT_CALENDAR_SRC =
 export const SOCIALS = {
   linkedin:
     "https://www.linkedin.com/company/texas-accelerate/?viewAsMember=true",
-  instagram: "https://www.instagram.com/texasaccelerate/?hl=en",
+  instagram: "https://www.instagram.com/texasaccelerate/",
 };
 
 export const PROCESS = [

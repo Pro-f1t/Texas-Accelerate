@@ -3,6 +3,7 @@ import ContactDetails from "@/components/ContactDetails";
 import LogoMarquee from "@/components/LogoMarquee";
 import ProcessCard from "@/components/ProcessCard";
 import { PillButton, PlaceholderArt } from "@/components/ui";
+import { MagicText } from "@/components/ui/magic-text";
 import {
   HOW_WE_WORK_INTRO,
   PARTNER_LOGOS,
@@ -38,13 +39,11 @@ export default function Home() {
 
       {/* ---------------- Statement ---------------- */}
       <section className="shell pt-10 pb-12 lg:pt-0 lg:pb-24">
-        <p className="t-statement">
-          Texas Accelerate is a student-run organization. We partner with{" "}
-          <span className="text-accent">
-            Austin businesses, nonprofits, campaigns, and startups,
-          </span>{" "}
-          then match them with UT students who are ready to contribute.
-        </p>
+        <MagicText
+          className="t-statement"
+          text="Texas Accelerate is a student-run organization. We partner with Austin businesses, nonprofits, campaigns, and startups, then match them with UT students who are ready to contribute."
+          highlight="Austin businesses, nonprofits, campaigns, and startups,"
+        />
         <div className="mt-10 flex items-start" aria-hidden>
           <span className="block h-5 w-5 bg-accent" />
           <span className="mt-5 -ml-1 block h-7 w-7 bg-accent" />

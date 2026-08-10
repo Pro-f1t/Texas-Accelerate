@@ -57,6 +57,7 @@ export const LEADERSHIP: Member[] = [
     last: "Velasquez",
     role: "Social Media Manager",
     major: "Economics",
+    photo: "sofia-velasquez.jpg",
     seed: 4,
   },
 ];

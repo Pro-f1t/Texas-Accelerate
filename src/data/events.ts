@@ -29,6 +29,10 @@ export type InstagramPost = {
  */
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Db0i8l1sFgC",
+    alt: "Fall 2026 recruitment schedule: info sessions and coffee chats, Sept 1-12",
+  },
+  {
     shortcode: "DbrAgAjlZBA",
     alt: "New partnership: Texas Accelerate x OpenTrade",
   },

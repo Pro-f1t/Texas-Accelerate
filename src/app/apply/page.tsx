@@ -65,7 +65,11 @@ export default function ApplyPage() {
                 to point. */}
             <ul className="mt-6 flex flex-col gap-5">
               {[
-                { title: "2026 Fall Application Form", note: "Coming Soon!" },
+                {
+                  title: "2026 Fall Application Form",
+                  note: "Due Sep 12th 11:59",
+                  href: "https://docs.google.com/forms/d/e/1FAIpQLSeZjt_TKfX28KaT1stZQzN428IrkLDuYhG8CeBsLFmkYa8BIg/viewform",
+                },
                 {
                   title: "2026 Recruiting GroupMe",
                   note: "Join the group",

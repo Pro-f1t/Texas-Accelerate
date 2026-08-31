@@ -8,7 +8,14 @@ export type EventPost = {
   pullQuote?: string;
 };
 
-export type UpcomingEvent = { title: string; date: string; seed: number };
+export type UpcomingEvent = {
+  title: string;
+  /** Weekday, date and time on one line. */
+  date: string;
+  /** Room, venue or "Virtual" — renders as a third line when present. */
+  location?: string;
+  seed: number;
+};
 
 export type InstagramPost = {
   /** Code from the post URL: instagram.com/p/<shortcode>/ */
@@ -29,6 +36,14 @@ export type InstagramPost = {
  */
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DcY_YvLMJMP",
+    alt: "Fall 2026 recruitment calendar for September, updated with locations for info sessions and coffee chats",
+  },
+  {
+    shortcode: "DcUbp72FQuD",
+    alt: "Meet the Execs — swipe to meet the team behind Fall 2026",
+  },
+  {
     shortcode: "Db0i8l1sFgC",
     alt: "Fall 2026 recruitment schedule: info sessions and coffee chats, Sept 1-12",
   },
@@ -42,11 +57,50 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
   },
 ];
 
-/** Sidebar list on /events. Separate from EVENTS, which is the posted archive. */
+/**
+ * Sidebar list on /events. Separate from EVENTS, which is the posted archive.
+ *
+ * Transcribed from the Fall '26 recruitment calendar (the Sep 2026 post,
+ * shortcode DcY_YvLMJMP). Attendance at one info session is required to apply;
+ * one coffee chat is highly encouraged.
+ */
 export const UPCOMING_EVENTS: UpcomingEvent[] = [
-  { title: "Info Session #1", date: "Date TBA", seed: 0 },
-  { title: "Info Session #2", date: "Date TBA", seed: 1 },
-  { title: "Coffee Chat #1", date: "Date TBA", seed: 2 },
+  {
+    title: "Info Session #1",
+    date: "Tue, Sep 1 \u00b7 7:00 \u2013 8:00 PM",
+    location: "PAI 2.48",
+    seed: 0,
+  },
+  {
+    title: "Coffee Chat #1",
+    date: "Wed, Sep 2 \u00b7 5:00 \u2013 6:30 PM",
+    location: "Gong Cha",
+    seed: 1,
+  },
+  {
+    title: "Info Session #2",
+    date: "Mon, Sep 7 \u00b7 6:00 \u2013 7:00 PM",
+    location: "CAL 100",
+    seed: 2,
+  },
+  {
+    title: "Coffee Chat #2",
+    date: "Tue, Sep 8 \u00b7 5:00 \u2013 6:30 PM",
+    location: "Lucky Lab",
+    seed: 3,
+  },
+  {
+    title: "Info Session #3",
+    date: "Thu, Sep 10 \u00b7 7:00 \u2013 8:00 PM",
+    location: "Virtual",
+    seed: 0,
+  },
+  {
+    title: "Application Closes",
+    date: "Sat, Sep 12 \u00b7 11:59 PM",
+    location: "Online",
+    seed: 1,
+  },
 ];
 
 export const GOOGLE_CALENDAR_URL =

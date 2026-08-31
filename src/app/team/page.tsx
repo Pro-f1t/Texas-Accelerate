@@ -5,7 +5,12 @@ import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import { LinkedInIcon } from "@/components/Icons";
 import { PlaceholderArt } from "@/components/ui";
-import { LEADERSHIP, MEMBERS, type Member } from "@/data/team";
+import {
+  FIELD_TEAM_LEADS,
+  LEADERSHIP,
+  MEMBERS,
+  type Member,
+} from "@/data/team";
 
 export const metadata: Metadata = { title: "Team | Texas Accelerate" };
 
@@ -124,6 +129,23 @@ export default function TeamPage() {
             />
           ))}
         </div>
+
+        {FIELD_TEAM_LEADS.length > 0 && (
+          <>
+            <h2 className="mt-20 text-center text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.26] font-semibold">
+              Field Team Leads
+            </h2>
+            <div className={GRID}>
+              {FIELD_TEAM_LEADS.map((m, i) => (
+                <MemberCard
+                  key={`${m.first}-${m.last}-${m.role}`}
+                  m={m}
+                  className={orphanClass(FIELD_TEAM_LEADS.length, i)}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         <h2 className="mt-20 text-center text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.26] font-semibold">
           Fall 2026 Members

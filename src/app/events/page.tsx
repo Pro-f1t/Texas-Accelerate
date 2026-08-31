@@ -46,6 +46,11 @@ export default function EventsPage() {
                     <span className="mt-1 block text-txs text-muted">
                       {e.date}
                     </span>
+                    {e.location && (
+                      <span className="block text-txs text-muted">
+                        {e.location}
+                      </span>
+                    )}
                   </span>
                 </li>
               ))}

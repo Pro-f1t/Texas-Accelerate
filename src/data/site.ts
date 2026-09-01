@@ -75,11 +75,6 @@ export const PARTNER_TYPES = [
     subtitle: "Research, operations, and outreach in health and biotech.",
     seed: 0,
   },
-  {
-    title: "Non-Profit\n& Social Impact",
-    subtitle: "Fundraising, outreach, and program work for local causes.",
-    seed: 1,
-  },
 ];
 
 export const STATS = [

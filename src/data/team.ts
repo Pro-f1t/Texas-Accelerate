@@ -18,8 +18,6 @@ export type Member = {
 /**
  * Directors first, then coordinators by department. One grid — the team page
  * renders this as a single "Leadership" section.
- *
- * Dhruv Alamuri is listed without a photo until his new headshot arrives.
  */
 export const LEADERSHIP: Member[] = [
   {
@@ -86,14 +84,12 @@ export const LEADERSHIP: Member[] = [
     seed: 6,
   },
   {
-    // No `photo` yet — awaiting his new headshot, so this card renders the
-    // gradient placeholder. Drop `dhruv-alamuri.jpg` into public/team/ and add
-    // the field to swap it in.
     first: "Dhruv",
     last: "Alamuri",
     role: "Acquisition Coordinator",
     major: "Computer Science",
     linkedin: "https://www.linkedin.com/in/dhruvalamuri/",
+    photo: "dhruv-alamuri.jpg",
     seed: 7,
   },
   {

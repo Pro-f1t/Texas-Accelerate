@@ -66,9 +66,9 @@ export default function ApplyPage() {
             <ul className="mt-6 flex flex-col gap-5">
               {[
                 {
-                  title: "2026 Fall Application Form",
+                  title: "2026 Fall Application Portal",
                   note: "Due Sep 12th 11:59",
-                  href: "https://docs.google.com/forms/d/e/1FAIpQLSeZjt_TKfX28KaT1stZQzN428IrkLDuYhG8CeBsLFmkYa8BIg/viewform",
+                  href: "https://txarecruiting.vercel.app/",
                 },
                 {
                   title: "2026 Recruiting GroupMe",

@@ -1,10 +1,51 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import DarkVeil from "./DarkVeil";
 import Logo from "./Logo";
 import { InstagramIcon, LinkedInIcon } from "./Icons";
 import { PillButton } from "./ui";
-import { SOCIALS } from "@/data/site";
+import { CONTACT_EMAIL, SOCIALS } from "@/data/site";
+
+/**
+ * The heading / CTA block at the top of the footer. The background shader and
+ * the bottom bar are identical everywhere; only this copy changes per route.
+ */
+function FooterCopy({ pathname }: { pathname: string }) {
+  if (pathname === "/partners") {
+    const mailto = `mailto:${CONTACT_EMAIL}`;
+    return (
+      <>
+        <h2 className="h-display">Let&rsquo;s talk.</h2>
+        <div className="mt-8 flex flex-wrap items-center gap-5 md:gap-6">
+          <PillButton href={mailto} size="sm">
+            Contact us
+          </PillButton>
+          <a href={mailto} className="text-tmd text-muted transition-colors hover:text-accent">
+            {CONTACT_EMAIL}
+          </a>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h2 className="h-display lg:whitespace-nowrap">Accelerate your career now</h2>
+      <p className="t-body mt-4 max-w-lg text-muted">
+        Bridging the gap between students and work that actually matters.
+      </p>
+
+      <PillButton href="/apply" size="sm" className="mt-8">
+        Apply Now
+      </PillButton>
+    </>
+  );
+}
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return (
     <footer className="relative isolate overflow-hidden bg-footer">
       {/*
@@ -22,14 +63,7 @@ export default function Footer() {
       </div>
 
       <div className="shell pt-24 pb-12 md:pt-32 md:pb-14">
-        <h2 className="h-display lg:whitespace-nowrap">Accelerate your career now</h2>
-        <p className="t-body mt-4 max-w-lg text-muted">
-          Bridging the gap between students and work that actually matters.
-        </p>
-
-        <PillButton href="/apply" size="sm" className="mt-8">
-          Apply Now
-        </PillButton>
+        <FooterCopy pathname={pathname} />
 
         {/* items-start matters on phones: without it the stretched flex item
             makes the logo full-width and object-contain centres the artwork. */}

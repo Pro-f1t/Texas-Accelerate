@@ -20,15 +20,18 @@ const syne = Syne({
  * page instead of the image, and clients like iMessage then fall back to
  * scraping a random image off the page.
  *
- * - NEXT_PUBLIC_SITE_URL wins, for when a custom domain is attached.
- * - VERCEL_PROJECT_PRODUCTION_URL is the stable public domain on Vercel.
+ * - NEXT_PUBLIC_SITE_URL wins, if set in the Vercel project.
+ * - On any Vercel build, the custom domain texas-accelerate.org. This is baked
+ *   in rather than read from VERCEL_PROJECT_PRODUCTION_URL because that var
+ *   still reports the *.vercel.app hostname; the custom domain 301s there from
+ *   it, which is fine for humans but makes OG URLs bounce for scrapers.
  * - localhost for local dev.
  */
+const PRODUCTION_URL = "https://texas-accelerate.org";
+
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+  (process.env.VERCEL ? PRODUCTION_URL : "http://localhost:3000");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -27,7 +27,7 @@ Optional environment variable:
 
 | Variable | When to set it |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Once a custom domain is attached, e.g. `https://texasaccelerate.org`. Used as the absolute base for Open Graph images. Without it the app falls back to `VERCEL_URL`, which is correct for both preview and production deploys. |
+| `NEXT_PUBLIC_SITE_URL` | Optional override for the absolute base of Open Graph image URLs. On Vercel the app defaults to the custom domain `https://texas-accelerate.org` (set in `src/app/layout.tsx`); locally it uses `http://localhost:3000`. Never point this at a `*.vercel.app` preview hostname. |
 
 ## Editing content
 
